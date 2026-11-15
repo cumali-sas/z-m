@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zümra'ya 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffb6d5, #ff75ad, #ffc4dc, #ff8fba);
+    background-size: 400% 400%;
+    animation: backgroundMove 12s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a3235c;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Arka plan kalpleri */
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp linear forwards;
+    filter: drop-shadow(0 0 8px #fff);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% { opacity: .9; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Ana kart */
+
+.card {
+    position: relative;
+    z-index: 2;
+    width: min(90%, 470px);
+    padding: 45px 25px;
+    border-radius: 35px;
+    text-align: center;
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255,255,255,.8);
+    box-shadow: 0 20px 60px #b72b6840;
+    animation: cardEnter 1.2s ease;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.top-heart {
+    font-size: 48px;
+    animation: heartbeat 1.2s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(35px, 8vw, 48px);
+    color: #d52c75;
+    margin: 20px 0 12px;
+    text-shadow: 0 3px 12px #ff9ec8;
+}
+
+.subtitle {
+    color: #b83b72;
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    transition: transform .35s, box-shadow .35s;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff2785, #ff66a6);
+    color: white;
+    padding: 17px 35px;
+    border-radius: 50px;
+    font-size: 20px;
+    box-shadow: 0 8px 25px #f52c8060;
+    position: relative;
+    z-index: 2;
+}
+
+.yes-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 35px #f52c80a0;
+}
+
+.no-btn {
+    background: rgba(255,255,255,.8);
+    color: #d83d7e;
+    padding: 13px 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    box-shadow: 0 5px 15px #d52c7520;
+}
+
+.no-btn:hover {
+    transform: scale(.95);
+}
+
+.hint {
+    margin-top: 25px;
+    font-size: 12px;
+    color: #c04a7c;
+}
+
+/* Mutlu son */
+
+.success {
+    display: none;
+    animation: successEnter 1s ease;
+}
+
+@keyframes successEnter {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.success h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #e91e76;
+    margin: 15px 0;
+}
+
+.success p {
+    font-size: 15px;
+    color: #a52d66;
+}
+
+/* Kaplumbağa */
+
+.turtle {
+    font-size: 105px;
+    display: inline-block;
+    animation: turtleDance 1s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+@keyframes turtleDance {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    25% { transform: rotate(8deg) translateY(-12px); }
+    50% { transform: rotate(-8deg) translateY(0); }
+    75% { transform: rotate(8deg) translateY(-12px); }
+}
+
+.restart {
+    margin-top: 25px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: white;
+    color: #d52c75;
+}
+
+/* Parçacıklar */
+
+.burst {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    font-size: 25px;
+    animation: burst 1.5s ease-out forwards;
+}
+
+@keyframes burst {
+    to {
+        transform: translate(var(--x), var(--y)) rotate(360deg) scale(.2);
+        opacity: 0;
+    }
+}
+
+@media(max-width: 480px) {
+    .card { padding: 35px 18px; }
+    .success h2 { font-size: 40px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div id="questionArea">
+
+        <div class="top-heart">💗</div>
+
+        <h1>İçin ısındı mı bana???</h1>
+
+        <p class="subtitle">
+            Sana minicik ama çok önemli bir sorum var... 🥺
+        </p>
+
+        <div class="buttons">
+
+            <button class="yes-btn" id="yesBtn" onclick="sayYes()">
+                Evet tabikide 💗
+            </button>
+
+            <button class="no-btn" id="noBtn" onclick="sayNo()">
+                Hayır 🙈
+            </button>
+
+        </div>
+
+        <p class="hint">
+            Düşünmeden cevap verme ama... 💕
+        </p>
+
+    </div>
+
+    <div class="success" id="successArea">
+
+        <div class="turtle">🐢</div>
+
+        <h2>İŞTE BUUUU! 💗</h2>
+
+        <p>
+            Biliyordum zaten! 🥹💕
+            <br>
+            İyi ki varsın Zümra!
+        </p>
+
+        <div style="font-size:35px; margin-top:20px;">
+            💖 💗 💞 💓
+        </div>
+
+        <button class="restart" onclick="location.reload()">
+            Tekrar başlat 💕
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+// Rastgele uçuşan kalpler
+
+const heartTypes = ["💗", "💖", "💕", "💘", "💝", "❤️"];
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        heartTypes[Math.floor(Math.random() * heartTypes.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = (15 + Math.random() * 30) + "px";
+
+    heart.style.animationDuration = (5 + Math.random() * 7) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 13000);
+}
+
+setInterval(createHeart, 220);
+
+
+// Hayır butonuna basıldığında
+
+let noCount = 0;
+
+const noTexts = [
+    "Bidaha düşün bence 🙈",
+    "Hadi be hiç mi? 🥺",
+    "Bir şans daha ver 💗",
+    "Kalbimi kırma ama 😭",
+    "Son kararın mı? 🥹",
+    "Evet desene artık 💞",
+    "Hadi amaaa ❤️"
+];
+
+let yesScale = 1;
+
+function sayNo() {
+
+    noCount++;
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    const textIndex = Math.min(noCount - 1, noTexts.length - 1);
+
+    noBtn.textContent = noTexts[textIndex];
+
+    yesScale += 0.22;
+
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    yesBtn.style.boxShadow =
+        "0 8px 35px rgba(255,30,130,.7)";
+
+    // Her hayırda kalpler
+
+    for (let i = 0; i < 8; i++) {
+        createBurst(
+            window.innerWidth / 2,
+            window.innerHeight / 2,
+            "💗"
+        );
+    }
+}
+
+
+// Evet butonuna basıldığında
+
+function sayYes() {
+
+    document.getElementById("questionArea").style.display = "none";
+
+    document.getElementById("successArea").style.display = "block";
+
+    // Büyük kalp kutlaması
+
+    for (let i = 0; i < 70; i++) {
+
+        setTimeout(() => {
+
+            createBurst(
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerHeight,
+                heartTypes[Math.floor(Math.random() * heartTypes.length)]
+            );
+
+        }, i * 35);
+
+    }
+
+    // Kutlama kalpleri
+
+    for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+}
+
+
+// Kalp patlama efekti
+
+function createBurst(x, y, symbol) {
+
+    const item = document.createElement("div");
+
+    item.className = "burst";
+
+    item.textContent = symbol;
+
+    item.style.left = x + "px";
+
+    item.style.top = y + "px";
+
+    item.style.setProperty("--x", (Math.random() - .5) * 250 + "px");
+
+    item.style.setProperty("--y", (Math.random() - .5) * 250 + "px");
+
+    document.body.appendChild(item);
+
+    setTimeout(() => item.remove(), 1600);
+}
+
+</script>
+
+</body>
+</html>
